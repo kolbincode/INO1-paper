@@ -20,15 +20,10 @@ positions = beads(:,first:last,:);
 spot_COM = squeeze(mean(positions,2));
 
 for tau = 1:tauMax
-    step = tau;    % =tau for non-overlapping msd; =1 for overlapping msd
+    step = 1;    % =tau for non-overlapping msd; =1 for overlapping msd
     MMM = squeeze(vecnorm(spot_COM(:,1+tau:step:end) - spot_COM(:,1:step:end-tau), 2, 1).^2);
     msd(tau) =  mean(MMM);
 end
 
 
 end %end of function
-
-%  this code changes step for overlapping msd
-%         if (over == 1)  step = 1;
-%         else            step = tau;
-%         end
